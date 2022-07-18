@@ -6,7 +6,7 @@
   border: 3px solid #000000;
   border-radius: 9% 13% 15% 1% / 1% 1% 2% 6%;
   box-shadow: 20px 20px #eeeeee;
-  margin: 20px;
+  margin: 20px auto 20px;
   font-family: Arial, Helvetica, sans-serif;
   z-index: 1;
 }
@@ -110,7 +110,8 @@ h3 {
   font-size: 60px;
 }
 
-a {
+#celsius,
+#fahrenheit {
   color: #000000;
   font-weight: 900;
   text-decoration: none;
@@ -131,8 +132,7 @@ li,
 
 hr {
   margin: 5px auto 5px;
-  border: none;
-  border-top: 3px double #000000;
+  border: 0.5px solid #000000;
 }
 
 .container {
@@ -143,24 +143,46 @@ hr {
   text-align: center;
 }
 
-#dayName {
+.day {
   margin: 5px auto 5px;
   font-weight: 900;
 }
 
-#icon {
+.icon {
   margin: 10px auto 10px;
   font-size: 45px;
 }
 
-#number {
+.number {
   margin: 5px auto 5px;
   font-size: 13px;
   font-weight: 900;
+}
+.day-one,
+.day-two,
+.day-three,
+.day-four,
+.day-five,
+.day-six,
+.day-seven {
+  flex-direction: column;
 }
 
 #cityName,
 #countryName {
   display: flex;
   flex-direction: row;
+}
+
+.credit {
+  margin: 20px auto 20px;
+  font-family: Arial;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.github {
+  text-decoration: none;
+  color: #ffb400;
 }
