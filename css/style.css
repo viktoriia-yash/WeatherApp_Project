@@ -1,0 +1,166 @@
+.weather-app {
+  position: relative;
+  width: 800px;
+  height: 450px;
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 9% 13% 15% 1% / 1% 1% 2% 6%;
+  box-shadow: 20px 20px #eeeeee;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+}
+
+.weather-app::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #000000;
+  border-radius: 15% 1% 12% 14% / 2% 1% 4% 4%;
+  transform: translate3d(-50%, -50%, 0) scale(1.01) rotate(0.5deg);
+  z-index: -1;
+}
+
+.top-bar {
+  position: absolute;
+  width: 786px;
+  background-color: #ffffff;
+  border-color: #000000;
+  border-width: 0px 0px 3px 0px;
+  border-style: solid;
+  padding: 7px;
+  z-index: 1;
+}
+
+.top-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #000000;
+  border-radius: 15% 1% 12% 14% / 2% 1% 4% 4%;
+  transform: translate3d(-50%, -50%, 0) scale(1.01) rotate(0.5deg);
+  z-index: -1;
+}
+
+.close-button,
+#searchButton,
+#locationButton {
+  background-color: #b0bec5;
+  border: 3px solid #000000;
+}
+
+.close-button:hover,
+#searchButton:hover,
+#locationButton:hover {
+  background-color: #e2f1f8;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+#searchBar {
+  border: 3px solid #000000;
+  padding: 5px;
+  width: 450px;
+  text-transform: uppercase;
+}
+
+#searchButton,
+#locationButton {
+  padding: 5px 10px 5px;
+  text-transform: uppercase;
+}
+
+#rectangle {
+  padding: 60px 30px 30px;
+  text-transform: uppercase;
+}
+
+#searchThings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 21.4px auto 0;
+}
+
+h3 {
+  margin: 0 auto 21.4px;
+}
+
+#weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  margin: 10px auto 10px;
+}
+
+#temperature {
+  text-align: center;
+}
+
+#temperatureNumber {
+  font-size: 60px;
+}
+
+a {
+  color: #000000;
+  font-weight: 900;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 0 auto 30px;
+  display: inline-block;
+}
+
+#FahPlusCel > span {
+  vertical-align: top;
+}
+
+li,
+.detailed-information {
+  font-size: 16px;
+  list-style-type: none;
+}
+
+hr {
+  margin: 5px auto 5px;
+  border: none;
+  border-top: 3px double #000000;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+
+#dayName {
+  margin: 5px auto 5px;
+  font-weight: 900;
+}
+
+#icon {
+  margin: 10px auto 10px;
+  font-size: 45px;
+}
+
+#number {
+  margin: 5px auto 5px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+#cityName,
+#countryName {
+  display: flex;
+  flex-direction: row;
+}
