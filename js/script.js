@@ -67,7 +67,7 @@ function weatherAndDetails(response) {
   let iconElement = document.querySelector("#icon-w");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
@@ -75,6 +75,7 @@ function weatherAndDetails(response) {
 let temperatureData = null;
 
 // City
+
 function showMeCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#searchBar");
