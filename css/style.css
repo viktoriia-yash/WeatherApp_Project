@@ -95,7 +95,7 @@ h3 {
   margin: 0 auto 21.4px;
 }
 
-#weather-details {
+#weather {
   display: grid;
   grid-template-columns: repeat(2, auto);
   align-items: center;
@@ -112,7 +112,7 @@ h3 {
 
 #celsius,
 #fahrenheit {
-  color: #000000;
+  color: #eb6e4b;
   font-weight: 900;
   text-decoration: none;
   font-size: 15px;
@@ -120,7 +120,7 @@ h3 {
   display: inline-block;
 }
 
-#FahPlusCel > span {
+#FahPlusCel {
   vertical-align: top;
 }
 
@@ -184,5 +184,10 @@ hr {
 
 .github {
   text-decoration: none;
-  color: #ffb400;
+  color: #eb6e4b;
+}
+
+#icon-w {
+  vertical-align: bottom;
+  width: 75px;
 }

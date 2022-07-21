@@ -47,6 +47,7 @@ let time = document.querySelector("h3");
 time.innerHTML = `${weekDayName} ${monthDayNumber} ${month}, ${hour}:${minute}`;
 
 // Details
+
 function weatherAndDetails(response) {
   let cityN = document.querySelector("#cityName");
   cityN.innerHTML = response.data.name;
@@ -62,6 +63,13 @@ function weatherAndDetails(response) {
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
   let visibility = document.querySelector("#visibility");
   visibility.innerHTML = `Visibility: ${response.data.weather[0].description}`;
+
+  let iconElement = document.querySelector("#icon-w");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let temperatureData = null;
@@ -105,7 +113,8 @@ let celToFah = document.querySelector("#celsius");
 celToFah.addEventListener("click", temperatureCel);
 
 // current location
-function showMeCurLocation(position) {
+
+function showMeCurrLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "1766cbbe43ef71cdc8ece5c867ddb581";
@@ -114,10 +123,10 @@ function showMeCurLocation(position) {
   axios.get(apiUrl).then(weatherAndDetails);
 }
 
-function butCurLocation(event) {
+function butCurrLocation(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showMeCurLocation);
+  navigator.geolocation.getCurrentPosition(showMeCurrLocation);
 }
 
 let curLocation = document.querySelector("#locationButton");
-curLocation.addEventListener("click", butCurLocation);
+curLocation.addEventListener("click", butCurrLocation);
