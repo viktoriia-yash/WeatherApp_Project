@@ -46,6 +46,29 @@ if (minute < 10) {
 let time = document.querySelector("h3");
 time.innerHTML = `${weekDayName} ${monthDayNumber} ${month}, ${hour}:${minute}`;
 
+// Display Forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="day-one">
+  <div class="day">${day}</div>
+  <div class="icon"><img
+  src="https://openweathermap.org/img/wn/10d@2x.png"
+  alt="icon weather"
+  id="icon-w"
+/></div>
+  <div class="number-max">37° </div><div class="number-min">23°</div>
+</div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Details
 
 function weatherAndDetails(response) {
@@ -131,3 +154,5 @@ function butCurrLocation(event) {
 
 let curLocation = document.querySelector("#locationButton");
 curLocation.addEventListener("click", butCurrLocation);
+
+displayForecast();

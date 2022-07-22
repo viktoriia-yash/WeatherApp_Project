@@ -153,11 +153,18 @@ hr {
   font-size: 45px;
 }
 
-.number {
+.number-max,
+.number-min {
+  display: inline;
   margin: 5px auto 5px;
   font-size: 13px;
   font-weight: 900;
 }
+
+.number-min {
+  color: #a4a4a4;
+}
+
 .day-one,
 .day-two,
 .day-three,
