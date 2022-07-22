@@ -135,7 +135,7 @@ hr {
   border: 0.5px solid #000000;
 }
 
-.container {
+.weather-forecast {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -166,12 +166,6 @@ hr {
 .day-six,
 .day-seven {
   flex-direction: column;
-}
-
-#cityName,
-#countryName {
-  display: flex;
-  flex-direction: row;
 }
 
 .credit {
