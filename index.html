@@ -21,16 +21,16 @@
 
       <div id="rectangle">
         <form id="searchThings">
-          <input type="text" placeholder="Search by city" id="searchBar" />
+          <input type="text" placeholder="Type a city" id="searchBar" />
           <input type="button" value="Search" id="searchButton" />
           <input type="button" value="Current location" id="locationButton" />
         </form>
 
         <span>
-          <h1 id="cityName">Rome</h1>
+          <h1 id="cityName"></h1>
         </span>
         <div id="date">
-          <h3>SUNDAY 10 JULY, 13:15</h3>
+          <h3></h3>
         </div>
 
         <div id="weather">
@@ -41,7 +41,7 @@
                 alt="icon weather"
                 id="icon-w"
             /></span>
-            <span id="temperatureNumber">36</span>
+            <span id="temperatureNumber"></span>
             <span id="FahPlusCel">
               <span id="celsius-un"><a href="#" id="celsius">°C</a></span>
               <span id="separator">|</span>
@@ -49,12 +49,11 @@
             </span>
           </span>
 
-          <span class="detailed-information">
-            <span id="visibility">Visibility: 0%</span>
-            <br />
-            <span id="humidity">Humidity: 25%</span>
-            <br />
-            <span id="wind">Wind: 12 mph</span>
+          <span class="weatherAllInformation">
+            <ul>
+              <li>Visibility: <span id="visibility"></span></li>
+              <li>Humidity: <span id="humidity"></span> %</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
           </span>
         </div>
 

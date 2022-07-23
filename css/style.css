@@ -48,11 +48,19 @@
   z-index: -1;
 }
 
+#searchThings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
 .close-button,
 #searchButton,
 #locationButton {
   background-color: #b0bec5;
   border: 3px solid #000000;
+  padding: 5px 10px 5px;
 }
 
 .close-button:hover,
@@ -67,24 +75,11 @@
   border: 3px solid #000000;
   padding: 5px;
   width: 450px;
-  text-transform: uppercase;
-}
-
-#searchButton,
-#locationButton {
-  padding: 5px 10px 5px;
-  text-transform: uppercase;
 }
 
 #rectangle {
   padding: 60px 30px 30px;
   text-transform: uppercase;
-}
-
-#searchThings {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 h1 {
@@ -125,7 +120,7 @@ h3 {
 }
 
 li,
-.detailed-information {
+.weatherAllInformation {
   font-size: 16px;
   list-style-type: none;
 }
@@ -165,21 +160,10 @@ hr {
   color: #a4a4a4;
 }
 
-.day-one,
-.day-two,
-.day-three,
-.day-four,
-.day-five,
-.day-six,
-.day-seven {
-  flex-direction: column;
-}
-
 .credit {
-  margin: 20px auto 20px;
+  text-align: center;
   font-family: Arial;
   font-size: 13px;
-  text-align: center;
   font-weight: 900;
 }
 

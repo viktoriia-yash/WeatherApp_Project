@@ -1,22 +1,5 @@
-// Current Day and Time
-let showDate = new Date();
-
-let twelveMonths = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = twelveMonths[showDate.getMonth()];
-
+// Date and time
+let ourDate = new Date();
 let weekDay = [
   "Sunday",
   "Monday",
@@ -26,66 +9,42 @@ let weekDay = [
   "Friday",
   "Saturday",
 ];
-let weekDayName = weekDay[showDate.getDay()];
+let weekDayName = weekDay[ourDate.getDay()];
 
-let monthDayNumber = showDate.getDate();
+let monthDayNumber = ourDate.getDate();
 if (monthDayNumber < 10) {
   monthDayNumber = `0${monthDayNumber}`;
 }
 
-let hour = showDate.getHours();
+let hour = ourDate.getHours();
 if (hour < 10) {
   hour = `0${hour}`;
 }
 
-let minute = showDate.getMinutes();
+let minute = ourDate.getMinutes();
 if (minute < 10) {
   minute = `0${minute}`;
 }
 
 let time = document.querySelector("h3");
-time.innerHTML = `${weekDayName} ${monthDayNumber} ${month}, ${hour}:${minute}`;
+time.innerHTML = `${weekDayName} ${monthDayNumber}, ${hour}:${minute}`;
 
-// Display Forecast
-
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = "";
-  let days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="day-one">
-  <div class="day">${day}</div>
-  <div class="icon"><img
-  src="https://openweathermap.org/img/wn/10d@2x.png"
-  alt="icon weather"
-  id="icon-w"
-/></div>
-  <div class="number-max">37° </div><div class="number-min">23°</div>
-</div>`;
-  });
-  forecastElement.innerHTML = forecastHTML;
-}
-
-// Details
-
-function weatherAndDetails(response) {
-  let cityN = document.querySelector("#cityName");
-  cityN.innerHTML = response.data.name;
-
+// All we need
+function weatherAllInformation(response) {
   temperatureData = response.data.main.temp;
-  let realTemp = Math.round(temperatureData);
-  let todayTemp = document.querySelector("#temperatureNumber");
-  todayTemp.innerHTML = `${realTemp}`;
+  let ourTemp = Math.round(temperatureData);
+  let displayTemp = document.querySelector("#temperatureNumber");
+  displayTemp.innerHTML = `${ourTemp}`;
+
+  let ourCity = document.querySelector("#cityName");
+  ourCity.innerHTML = response.data.name;
 
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `Wind: ${response.data.wind.speed}`;
+  wind.innerHTML = `${response.data.wind.speed}`;
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
+  humidity.innerHTML = `${response.data.main.humidity}`;
   let visibility = document.querySelector("#visibility");
-  visibility.innerHTML = `Visibility: ${response.data.weather[0].description}`;
+  visibility.innerHTML = `${response.data.weather[0].description}`;
 
   let iconElement = document.querySelector("#icon-w");
   iconElement.setAttribute(
@@ -97,24 +56,45 @@ function weatherAndDetails(response) {
 
 let temperatureData = null;
 
-// City
-
-function showMeCity(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#searchBar");
-  let cityHOne = document.querySelector("#cityName");
-  cityHOne.innerHTML = searchInput.value;
+// City Search
+function search(city) {
   let apiKey = "1766cbbe43ef71cdc8ece5c867ddb581";
-  let cityDisplay = `${searchInput.value}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityDisplay}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(weatherAndDetails);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(weatherAllInformation);
 }
 
+function searchCitySubmit(event) {
+  event.preventDefault();
+  let citySearchBar = document.querySelector("#searchBar");
+  search(citySearchBar.value);
+}
+
+search("Rome");
+
 let showCityOne = document.querySelector("#searchThings");
-showCityOne.addEventListener("submit", showMeCity);
+showCityOne.addEventListener("submit", searchCitySubmit);
 
 let showCityTwo = document.querySelector("#searchButton");
-showCityTwo.addEventListener("click", showMeCity);
+showCityTwo.addEventListener("click", searchCitySubmit);
+
+// current location
+
+function showMeCurrentLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiKey = "1766cbbe43ef71cdc8ece5c867ddb581";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(weatherAllInformation);
+}
+
+function currLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showMeCurrentLocation);
+}
+
+let currentLocation = document.querySelector("#locationButton");
+currentLocation.addEventListener("click", currLocation);
 
 // cel to fah and vice versa
 function temperatureFah(event) {
@@ -136,23 +116,27 @@ function temperatureCel(event) {
 let celToFah = document.querySelector("#celsius");
 celToFah.addEventListener("click", temperatureCel);
 
-// current location
+// Forecast
 
-function showMeCurrLocation(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "1766cbbe43ef71cdc8ece5c867ddb581";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(weatherAndDetails);
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="day-one">
+  <div class="day">${day}</div>
+  <div class="icon"><img
+  src="https://openweathermap.org/img/wn/10d@2x.png"
+  alt="icon weather"
+  id="icon-w"
+/></div>
+  <div class="number-max">37° </div><div class="number-min">23°</div>
+</div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
 }
-
-function butCurrLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showMeCurrLocation);
-}
-
-let curLocation = document.querySelector("#locationButton");
-curLocation.addEventListener("click", butCurrLocation);
 
 displayForecast();
