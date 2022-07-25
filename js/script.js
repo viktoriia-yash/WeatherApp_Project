@@ -47,12 +47,12 @@ function weatherAllInformation(response) {
   let ourCity = document.querySelector("#cityName");
   ourCity.innerHTML = response.data.name;
 
-  let wind = document.querySelector("#wind");
-  wind.innerHTML = `${response.data.wind.speed}`;
+  let description = document.querySelector("#description");
+  description.innerHTML = `${response.data.weather[0].description}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
-  let visibility = document.querySelector("#visibility");
-  visibility.innerHTML = `${response.data.weather[0].description}`;
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `${Math.round(response.data.wind.speed)}`;
 
   let iconElement = document.querySelector("#icon-w");
   iconElement.setAttribute(
