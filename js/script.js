@@ -66,6 +66,27 @@ function weatherAllInformation(response) {
 
 let temperatureData = null;
 
+// cel to fah and vice versa
+
+function temperatureFah(event) {
+  event.preventDefault();
+  let temperatureC = document.querySelector("#temperatureNumber");
+  let tempFah = (temperatureData * 9) / 5 + 32;
+  temperatureC.innerHTML = Math.round(tempFah);
+}
+
+let celToFah = document.querySelector("#fahrenheit");
+celToFah.addEventListener("click", temperatureFah);
+
+function temperatureCel(event) {
+  event.preventDefault();
+  let temperatureF = document.querySelector("#temperatureNumber");
+  temperatureF.innerHTML = Math.round(temperatureData);
+}
+
+let fahToCel = document.querySelector("#celsius");
+fahToCel.addEventListener("click", temperatureCel);
+
 // City Search
 function search(city) {
   let apiKey = "1766cbbe43ef71cdc8ece5c867ddb581";
@@ -98,33 +119,13 @@ function showMeCurrentLocation(position) {
   axios.get(apiUrl).then(weatherAllInformation);
 }
 
-function currLocation(event) {
+function currentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showMeCurrentLocation);
 }
 
-let currentLocation = document.querySelector("#locationButton");
-currentLocation.addEventListener("click", currLocation);
-
-// cel to fah and vice versa
-function temperatureFah(event) {
-  event.preventDefault();
-  let temperatureC = document.querySelector("#temperatureNumber");
-  let tempFah = (temperatureData * 9) / 5 + 32;
-  temperatureC.innerHTML = Math.round(tempFah);
-}
-
-let fahToCel = document.querySelector("#fahrenheit");
-fahToCel.addEventListener("click", temperatureFah);
-
-function temperatureCel(event) {
-  event.preventDefault();
-  let temperatureF = document.querySelector("#temperatureNumber");
-  temperatureF.innerHTML = Math.round(temperatureData);
-}
-
-let celToFah = document.querySelector("#celsius");
-celToFah.addEventListener("click", temperatureCel);
+let displayCurrentLocation = document.querySelector("#locationButton");
+displayCurrentLocation.addEventListener("click", currentLocation);
 
 // Weather forecast and almost everything I need for it
 function formatDayForecast(timestamp) {
@@ -141,7 +142,7 @@ function displayForecast(response) {
 
   let forecastHTML = "";
   forecast.forEach(function (forecastDay, index) {
-    if (index < 7) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         `<div class="day-one">
@@ -151,9 +152,11 @@ function displayForecast(response) {
   alt="icon weather"
   id="icon-w"
 /></div>
-  <div class="number-max">${Math.round(
+  <div class="number-max" id="temp-max">${Math.round(
     forecastDay.temp.max
-  )}° </div><div class="number-min">${Math.round(forecastDay.temp.min)}°</div>
+  )}° </div><div class="number-min" id=temp-min">${Math.round(
+          forecastDay.temp.min
+        )}°</div>
 </div>`;
     }
   });
