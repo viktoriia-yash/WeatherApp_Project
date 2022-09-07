@@ -1,4 +1,4 @@
-I did this project during the SheCodes Plus course. To do this, I used:<br/>
+I did this project during the SheCodes Plus course. To create it, I used:<br/>
 <ul>
 <li>HTML, CSS, and Vanilla Javascript.</li>
 <li>API from OpenWeatherMap.org</li>
