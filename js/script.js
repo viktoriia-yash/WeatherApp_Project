@@ -145,8 +145,8 @@ function displayForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="day-one">
-  <div class="day">${formatDayForecast(forecastDay.dt)}</div>
+        `<div class="day">
+  <div class="day-name">${formatDayForecast(forecastDay.dt)}</div>
   <div class="icon"><img
   src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
   alt="icon weather"

@@ -14,16 +14,16 @@
     />
   </head>
   <body>
-    <div class="weather-app">
+    <div class="weather-container">
       <div class="top-bar">
         <input type="button" value="X" class="close-button" />
       </div>
 
-      <div id="rectangle">
-        <form id="searchThings">
-          <input type="text" placeholder="Type a city" id="searchBar" />
-          <input type="button" value="Search" id="searchButton" />
-          <input type="button" value="Current location" id="locationButton" />
+      <div id="weather-all-info">
+        <form class="search-city">
+          <input type="text" placeholder="Type a city" class="search-bar" />
+          <input type="button" value="Search" class="search-button" />
+          <input type="button" value="Current location" class="location-button" />
         </form>
 
         <span>
@@ -33,7 +33,7 @@
           <h3></h3>
         </div>
 
-        <div id="weather">
+        <div id="weather-details">
           <span id="temperature">
             <span id="icon"
               ><img
@@ -49,7 +49,7 @@
             </span>
           </span>
 
-          <span class="weatherAllInformation">
+          <span class="weather-desc">
             <ul>
               <li><span id="description"></span></li>
               <li>Humidity: <span id="humidity"></span> %</li>
