@@ -7,11 +7,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather Project</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="https://cdn.shopify.com/s/files/1/1061/1924/products/The_Sun_Face_Emoji_large.png?v=1571606063"
-    />
+    <link rel="shortcut icon" type="image/png" href="src/icon.png" />
   </head>
   <body>
     <div class="weather-container">
@@ -23,7 +19,11 @@
         <form class="search-city">
           <input type="text" placeholder="Type a city" class="search-bar" />
           <input type="button" value="Search" class="search-button" />
-          <input type="button" value="Current location" class="location-button" />
+          <input
+            type="button"
+            value="Current location"
+            class="location-button"
+          />
         </form>
 
         <span>
@@ -54,6 +54,7 @@
               <li><span id="description"></span></li>
               <li>Humidity: <span id="humidity"></span> %</li>
               <li>Wind: <span id="wind"></span> km/h</li>
+            </ul>
           </span>
         </div>
 
