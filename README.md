@@ -1,6 +1,6 @@
 I did this project during the "SheCodes Plus" course. To create it, I used:<br/>
 <ul>
-<li>Vanilla JS, HTML, and CSS.</li>
+<li>Vanilla JS, HTML5, and CSS3.</li>
 <li>API from <a href="https://openweathermap.org/">OpenWeatherMap</a>.</li>
 <li>Netlify for hosting.</li>
 </ul>
